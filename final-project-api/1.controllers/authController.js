@@ -41,15 +41,42 @@ module.exports = {
                     db.query(sql2, (err2, result2) => {
                         try {
                             if(err2) throw err2
+                            let mailOptions = {
+                                from: 'Shoes Inc',
+                                to: req.body.email,
+                                subject: 'Account Verification',
+                                html: `<p> Click <a href="http://localhost:8888/auth/verify?firstname=${req.body.firstName}&email=${req.body.email}"> here </a> to verify your account! </p>`
+                            }
+
+                            transporter.sendMail(mailOptions, (err3, info) => {
+                                try {
+                                    if(err3) throw err3
+                                } catch (err3) {
+                                    console.log(err3)
+                                }
+                            })
+
                             res.send({
                                 status: '201',
-                                message: 'Your account has been created!'
+                                message: 'Your account has been created! Please Check your email to verify your account!'
                             })
                         } catch (err2) {
                             console.log(err2)
                         }
                     })
                 }
+            } catch (err) {
+                console.log(err)
+            }
+        })
+    },
+
+    verify : (req, res) => {
+        let sql = `update users set isVerified = 1 where firstName = '${req.query.firstName}' and email = '${req.query.email}'`
+        db.query(sql, (err, result) => {
+            try {
+                if(err) throw err
+                res.send('Your account has been verified. Please proceed to login page. Happy shopping!')
             } catch (err) {
                 console.log(err)
             }
