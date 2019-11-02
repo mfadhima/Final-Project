@@ -1,0 +1,63 @@
+jsx
+import React, {Component} from 'react'
+import './Header.css'
+
+class Header extends Component {
+    render() {
+        return (
+            <div className="container">
+                <div className="headerKu">
+                    <input placeholder="search" type="text"/>
+
+                    <button> Search </button>
+
+                    <div className="mx-3"> <a href="/login">Login</a> </div>
+
+                    <div style={{
+                        borderRightStyle: "solid",
+                        borderWidth: "1px",
+                        height: "16px",
+                        borderColor: "#ebebeb"
+                    }}></div>
+
+                    <div className="ml-3"> <a href="/register">Register</a> </div>
+                </div>
+            </div>
+        )
+    }
+}
+
+export default Header
+
+
+css
+.headerKu {
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    width: auto;
+    height: 50px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border-bottom-style: solid;
+    border-width: 1px;
+    border-color: #ebebeb;
+    position: relative;
+}
+
+.headerKu a {
+    color: black;
+}
+
+.headerKu input {
+    position: absolute;
+    left: 0;
+    top: 12px;
+}
+
+.headerKu button {
+    position: absolute;
+    left: 211px;
+    top: 13px;
+}

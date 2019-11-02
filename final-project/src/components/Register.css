@@ -1,0 +1,51 @@
+.card-register {
+    width: 500px;
+    height: auto;
+    background-color: #fbfbfb;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    margin-inline: auto;
+    margin-top: 50px;
+}
+
+.card-register .title-ku {
+    border-bottom: 1px solid #ebebeb;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #222;
+}
+
+.card-register p {
+    margin-bottom: 3px;
+    color: #606060;
+}
+
+.card-register label {
+    margin-bottom: 3px;
+    color: #606060;
+}
+
+.card-register input {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 8px 15px;
+    color: #888;
+    border: 1px solid #ccc;
+}
+
+.card-register .button-ku {
+    color: white;
+    background-color: rgb(65, 65, 65);
+    border: none;
+    padding: 5px 10px;
+    align-items: center;
+    margin-top: 5px;
+    transition: all 0.3s ease 0s;
+}
+
+.card-register .button-ku:hover {
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+}
