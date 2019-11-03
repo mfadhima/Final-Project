@@ -13,11 +13,40 @@ let transporter = nodeMailer.createTransport({
 })
 
 module.exports = {
-    checkUser : (req, res) => {
-        db.query(`select * from users`, (err, result) => {
+    // checkUser : (req, res) => {
+    //     db.query(`select * from users`, (err, result) => {
+    //         try {
+    //             if(err) throw err
+    //             res.send(result)
+    //         } catch (err) {
+    //             console.log(err)
+    //         }
+    //     })
+    // },
+
+    Login : (req, res) => {
+        let sql = `select * from users where email = '${req.query.email}'`
+        db.query(sql, (err, result) => {
             try {
                 if(err) throw err
-                res.send(result)
+                if(result.length > 0) {
+                    if(req.query.password === result[0].password) {
+                        res.send({
+                            status: '200',
+                            result: result[0]
+                        })
+                    } else {
+                        res.send({
+                            status: '400',
+                            message: 'Incorrect email or password.'
+                        })
+                    }
+                } else {
+                    res.send({
+                        status: '400',
+                        message: 'Incorrect email or password.'
+                    })
+                }
             } catch (err) {
                 console.log(err)
             }
@@ -45,7 +74,7 @@ module.exports = {
                                 from: 'Shoes Inc',
                                 to: req.body.email,
                                 subject: 'Account Verification',
-                                html: `<p> Click <a href="http://localhost:8888/auth/verify?firstname=${req.body.firstName}&email=${req.body.email}"> here </a> to verify your account! </p>`
+                                html: `<p> Click <a href="http://localhost:8888/auth/verify?firstName=${req.body.firstName}&email=${req.body.email}"> here </a> to verify your account! </p>`
                             }
 
                             transporter.sendMail(mailOptions, (err3, info) => {
@@ -76,7 +105,7 @@ module.exports = {
         db.query(sql, (err, result) => {
             try {
                 if(err) throw err
-                res.send('Your account has been verified. Please proceed to login page. Happy shopping!')
+                res.send(`Your account has been verified. Click <a href="http://localhost:3000/login">here</a> to go to the login page. Happy shopping!`)
             } catch (err) {
                 console.log(err)
             }

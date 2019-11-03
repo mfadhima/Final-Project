@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+import Axios from 'axios'
 import './Register.css'
 
 const URL_API = 'http://localhost:8888/'
@@ -21,7 +21,7 @@ class Register extends Component {
             }, 5000);
             this.setState({notifMessage: 'Fill in the form please...'})
         } else {
-            axios.post(
+            Axios.post(
                 URL_API + 'auth/register',
                 {
                     firstName: this.state.inputFirstName,
@@ -52,7 +52,7 @@ class Register extends Component {
                 return (
                     <div className="alert-ku alert-success text-center">{this.state.notifMessage}</div>
                 )
-            } else {
+            } else if(!this.state.statusCode || this.state.statusCode === '400') {
                 setTimeout(() => {
                     this.setState({notifMessage: ''})
                 }, 5000);
