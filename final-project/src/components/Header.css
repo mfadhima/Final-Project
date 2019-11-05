@@ -5,17 +5,17 @@
     align-items: center;
 }
 
-.header-ku .web-logo {
+.web-logo {
     margin-top: 20px;
     margin-bottom: 20px;
     margin-inline: auto;
 }
 
-.header-ku .web-logo a {
+.web-logo a {
     color: #606060;
 }
 
-.header-ku .web-logo a:hover {
+.web-logo a:hover {
     text-decoration: none;
 }
 

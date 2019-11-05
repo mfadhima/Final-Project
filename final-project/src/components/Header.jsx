@@ -42,6 +42,12 @@ class Header extends Component {
                             <Link to="/"> Logo </Link>
                         </div>
                     </div>
+
+                    <div className="header-ku justify-content-center">
+                        <div>Brand 1</div>
+                        <div className="mx-5">Brand 2</div>
+                        <div>Brand 3</div>
+                    </div>
     
                 </div>
             )
@@ -87,6 +93,12 @@ class Header extends Component {
                         <div className="web-logo">
                             <Link to="/"> Logo </Link>
                         </div>
+                    </div>
+
+                    <div className="header-ku justify-content-center">
+                        <div>Brand 1</div>
+                        <div className="mx-5">Brand 2</div>
+                        <div>Brand 3</div>
                     </div>
     
                 </div>

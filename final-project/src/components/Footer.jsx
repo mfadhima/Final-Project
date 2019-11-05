@@ -10,6 +10,9 @@ class Footer extends Component {
                         <div className="col-6">
                             <h5>About Us</h5>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis ad corrupti reprehenderit provident, aperiam, ratione non recusandae excepturi facere iure ipsum mollitia! Itaque nam voluptatem consequuntur magnam quos fugiat in quia harum natus? Corporis, quaerat placeat. Sed aliquam fugiat laboriosam.</p>
+                            <p>Company Adress...</p>
+                            <p>Phone number: +62 21 555 555</p>
+                            <p>E-mail: company@mail.com</p>
                         </div>
                         <div className="col-3">
                             <h5>Information</h5>
