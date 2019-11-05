@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {Route, BrowserRouter} from 'react-router-dom'
 import './App.css'
 
+import Footer from './Footer'
 import Header from './Header'
 import Home from './Home'
 import Login from './Login'
@@ -32,6 +33,7 @@ class App extends Component {
                         <Route path='/' exact component={Home}/>
                         <Route path='/register' exact component={Register}/>
                         <Route path='/login' exact component={Login}/>
+                        <Footer/>
                     </BrowserRouter>
                 </div>
             )
