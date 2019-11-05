@@ -66,7 +66,7 @@ class Register extends Component {
     render() {
         return (
             <div className="container">
-                <div style={{marginBottom:"500px"}} className="card-register container">
+                <div className="card-register container">
                     <p className="title-ku"> Create Account </p>
                     <label htmlFor="firstName"> First Name </label>
                     <input onChange={(e) => {this.setState({inputFirstName: e.target.value})}} placeholder="First Name" id="firstName" type="text" required/>

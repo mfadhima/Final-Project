@@ -1,10 +1,23 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
+import {Dropdown, DropdownItem, DropdownToggle, DropdownMenu} from 'reactstrap'
 import './Header.css'
 import {onLogoutUser} from './1.actions/index'
 
 class Header extends Component {
+    state = {
+        dropdownOpen: false
+    }
+
+    toggle = () => {
+        if(this.state.dropdownOpen === false) {
+            this.setState({dropdownOpen: true})
+        } else {
+            this.setState({dropdownOpen: false})
+        }
+    }
+
     render() {
         if(!this.props.user_email) {
             return (
@@ -44,7 +57,28 @@ class Header extends Component {
                         </div>
     
                         <div className="account-area">
-                            <div> <button className="btn" onClick={this.props.onLogoutUser}> Logout </button> </div>
+                            {/* <div className="dropdown">
+                                <button className="btn dropdown-toggle" > Your Account </button>
+                                <div className="dropdown-menu">
+                                    <a href="http://" target="_blank" rel="noopener noreferrer">Account Info</a>
+                                    <a href="http://" target="_blank" rel="noopener noreferrer">Address</a>
+                                    <a href="http://" target="_blank" rel="noopener noreferrer">Change Password</a>
+                                </div>
+                            </div> */}
+                            <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+                                <DropdownToggle caret>
+                                    Your Account
+                                </DropdownToggle>
+                                <DropdownMenu>
+                                    <DropdownItem>Account Info</DropdownItem>
+                                    <DropdownItem>Address</DropdownItem>
+                                    <DropdownItem>Change Password</DropdownItem>
+                                </DropdownMenu>
+                            </Dropdown>
+
+                            <div>
+                                <button className="btn" onClick={this.props.onLogoutUser}> Logout </button>
+                            </div>
                         </div>
     
                     </div>
