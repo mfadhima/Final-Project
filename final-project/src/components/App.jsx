@@ -3,11 +3,12 @@ import {connect} from 'react-redux'
 import {Route, BrowserRouter} from 'react-router-dom'
 import './App.css'
 
-import Footer from './Footer'
 import Header from './Header'
+import Footer from './Footer'
 import Home from './Home'
 import Login from './Login'
 import Register from './Register'
+import ManageProducts from './ManageProducts'
 
 import {keepLogin} from './1.actions/index'
 
@@ -31,8 +32,9 @@ class App extends Component {
                     <BrowserRouter>
                         <Header/>
                         <Route path='/' exact component={Home}/>
-                        <Route path='/register' exact component={Register}/>
-                        <Route path='/login' exact component={Login}/>
+                        <Route path='/manageproducts' component={ManageProducts}/>
+                        <Route path='/register' component={Register}/>
+                        <Route path='/login' component={Login}/>
                         <Footer/>
                     </BrowserRouter>
                 </div>

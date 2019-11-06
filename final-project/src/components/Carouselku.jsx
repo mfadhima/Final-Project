@@ -13,7 +13,7 @@ const items = [
         caption: 'MaretMantap'
     },
     {
-        src: '//cdn.shopify.com/s/files/1/0029/3981/3988/files/Last_Day_-_Web_Banner_1920x800.jpg?v=1572931022',
+        src: '//cdn.shopify.com/s/files/1/0029/3981/3988/files/Web_Banner_1_eb712236-a97c-4998-9f43-516ad4e7fdf1_1920x800.jpg?v=1572595000',
         altText: 'MaretMantap',
         caption: 'MaretMantap'
     }

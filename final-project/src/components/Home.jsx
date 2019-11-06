@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 
-// import Carouselku from './Carouselku'
+import Carouselku from './Carouselku'
 
 class Home extends Component {
     render() {
         return (
             <div>
-                {/* <Carouselku/> */}
+                <Carouselku/>
                 <div>
                     <h1 className="text-center">Home</h1>
                 </div>

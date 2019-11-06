@@ -17,15 +17,15 @@ export const onLoginUser = (EMAIL, PASSWORD) => {
             if(res.data.status === '400') {
                 console.log(res.data.message)
             } else if(res.data.status === '200') {
-                let {id, email} = res.data.result
+                let {id, email, role} = res.data.result
                 localStorage.setItem(
                     'userData',
-                    JSON.stringify({id, email})
+                    JSON.stringify({id, email, role})
                 )
                 dispatch({
                     type: 'LOGIN_SUCCESS',
                     payload: {
-                        id, email
+                        id, email, role
                     }
                 })
             }
@@ -38,7 +38,8 @@ export const keepLogin = (USER) => {
         type: 'LOGIN_SUCCESS',
         payload: {
             id: USER.id,
-            email: USER.email
+            email: USER.email,
+            role: USER.role
         }
     }
 }

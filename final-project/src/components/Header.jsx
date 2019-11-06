@@ -19,7 +19,7 @@ class Header extends Component {
     }
 
     render() {
-        if(!this.props.user_email) {
+        if(!this.props.userEmail) {
             return (
                 <div className="container">
     
@@ -51,7 +51,7 @@ class Header extends Component {
     
                 </div>
             )
-        } else {
+        } else if(this.props.role === 'user') {
             return (
                 <div className="container">
     
@@ -103,13 +103,65 @@ class Header extends Component {
     
                 </div>
             )
+        } else {
+            return (
+                <div className="container">
+    
+                    <div className="header-ku">
+    
+                        <div className="search-area">
+                            <div style={{marginTop:'3px'}} className="mr-2"> <input placeholder="Search our product" type="text"/> </div>
+                            <div> <button className="button-ku"> Search </button> </div>
+                        </div>
+    
+                        <div className="account-area">
+                            {/* <div className="dropdown">
+                                <button className="btn dropdown-toggle" > Your Account </button>
+                                <div className="dropdown-menu">
+                                    <a href="http://" target="_blank" rel="noopener noreferrer">Account Info</a>
+                                    <a href="http://" target="_blank" rel="noopener noreferrer">Address</a>
+                                    <a href="http://" target="_blank" rel="noopener noreferrer">Change Password</a>
+                                </div>
+                            </div> */}
+                            <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+                                <DropdownToggle className="user-dropdown" caret>
+                                    Admin Dashboard
+                                </DropdownToggle>
+                                <DropdownMenu>
+                                    <DropdownItem> <Link to="/manageproducts">Manage Product</Link> </DropdownItem>
+                                    <DropdownItem>Transaction</DropdownItem>
+                                </DropdownMenu>
+                            </Dropdown>
+
+                            <div>
+                                <button style={{borderLeft : '1px solid lightgrey', paddingRight : '1rem'}} className="btn" onClick={this.props.onLogoutUser}> Logout </button>
+                            </div>
+                        </div>
+    
+                    </div>
+    
+                    <div className="header-ku">
+                        <div className="web-logo">
+                            <Link to="/"> Logo </Link>
+                        </div>
+                    </div>
+
+                    <div className="header-ku justify-content-center">
+                        <div>Brand 1</div>
+                        <div className="mx-5">Brand 2</div>
+                        <div>Brand 3</div>
+                    </div>
+    
+                </div>
+            )
         }
     }
 }
 
 const mapStateToProps = (state) => {
     return {
-        user_email: state.auth.email
+        userEmail: state.auth.email,
+        role: state.auth.role
     }
 }
 
