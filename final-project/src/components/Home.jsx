@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
 
+// import Carouselku from './Carouselku'
+
 class Home extends Component {
     render() {
         return (
-            <div style={{marginBottom: "1000px"}} className="text-center mt-5">
-                <h1>Home</h1>
+            <div>
+                {/* <Carouselku/> */}
+                <div>
+                    <h1 className="text-center">Home</h1>
+                </div>
             </div>
         )
     }

@@ -56,3 +56,20 @@
 .header-ku .account-area a:hover {
     text-decoration: none;
 }
+
+.user-dropdown {
+    color: black;
+    background-color: white;
+    border-style: none;
+}
+
+.user-dropdown:hover {
+    text-decoration: none;
+    color: black;
+    background-color: white;
+    border-style: none;
+}
+
+.user-dropdown:active {
+    background-color: white;
+}

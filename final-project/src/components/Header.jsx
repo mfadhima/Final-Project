@@ -72,7 +72,7 @@ class Header extends Component {
                                 </div>
                             </div> */}
                             <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-                                <DropdownToggle caret>
+                                <DropdownToggle className="user-dropdown" caret>
                                     Your Account
                                 </DropdownToggle>
                                 <DropdownMenu>
@@ -83,7 +83,7 @@ class Header extends Component {
                             </Dropdown>
 
                             <div>
-                                <button className="btn" onClick={this.props.onLogoutUser}> Logout </button>
+                                <button style={{borderLeft : '1px solid lightgrey', paddingRight : '1rem'}} className="btn" onClick={this.props.onLogoutUser}> Logout </button>
                             </div>
                         </div>
     
