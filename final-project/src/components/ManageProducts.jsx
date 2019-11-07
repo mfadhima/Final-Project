@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Redirect} from 'react-router-dom'
 
+import './ManageProducts.css'
+
 class ManageProducts extends Component {
     render() {
         if(this.props.role === 'administrator') {
@@ -26,7 +28,7 @@ class ManageProducts extends Component {
                                     <td><input type="text" className="form-control"/></td>
                                     <td><input type="text" className="form-control"/></td>
                                     <td><input type="text" className="form-control"/></td>
-                                    <td><button className="btn">Add Product</button></td>
+                                    <td><button className="button-ku">Add Product</button></td>
                                 </tr>
                             </tbody>
                         </table>

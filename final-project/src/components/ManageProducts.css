@@ -1,0 +1,16 @@
+.button-ku {
+    color: white;
+    font-size: 14px;
+    background-color: rgb(65, 65, 65);
+    border: none;
+    padding: 5px 10px;
+    align-items: center;
+    transition: all 0.3s ease 0s;
+    border-radius: 0;
+}
+
+.button-ku:hover {
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+}
