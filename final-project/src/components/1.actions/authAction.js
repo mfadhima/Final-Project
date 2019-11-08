@@ -16,6 +16,13 @@ export const onLoginUser = (EMAIL, PASSWORD) => {
             // console.log(res.data)
             if(res.data.status === '400') {
                 console.log(res.data.message)
+                let {status, message} = res.data
+                dispatch({
+                    type: 'LOGIN_FAILED',
+                    payload: {
+                        status, message
+                    }
+                })
             } else if(res.data.status === '200') {
                 let {id, email, role} = res.data.result
                 localStorage.setItem(

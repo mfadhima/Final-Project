@@ -9,15 +9,23 @@ import {onLoginUser} from './1.actions/index'
 class Login extends Component {
     state = {
         inputEmail: '',
-        inputPassword: '',
-        statusCode: '',
-        errorMessage: ''
+        inputPassword: ''
     }
 
     onLoginClick = () => {
         let EMAIL = this.state.inputEmail
         let PASSWORD = this.state.inputPassword
         this.props.onLoginUser(EMAIL, PASSWORD)
+    }
+
+    notification = () => {
+        if(!this.props.statusCode) {
+            return null
+        } else {
+            return(
+                <div className="alert-ku alert-danger text-center">{this.props.errorMessage}</div>
+            )
+        }
     }
 
     render() {
@@ -32,6 +40,7 @@ class Login extends Component {
                         <input onChange={(e) => {this.setState({inputPassword: e.target.value})}} placeholder="Password" id="password" type="password" required/>
                         <p> Forgot your password? </p>
                         <button onClick={this.onLoginClick} className="button-ku"> Login </button>
+                        {this.notification()}
                     </div>
                 </div>
             )
@@ -44,7 +53,9 @@ class Login extends Component {
 const mapStateToProps = (state) => {
     return {
         userId: state.auth.id,
-        userEmail: state.auth.email
+        userEmail: state.auth.email,
+        statusCode: state.auth.statusCode,
+        errorMessage: state.auth.errorMessage
     }
 }
 

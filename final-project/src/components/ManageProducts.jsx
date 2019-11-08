@@ -27,7 +27,10 @@ class ManageProducts extends Component {
                                     <td><input type="text" className="form-control"/></td>
                                     <td><input type="text" className="form-control"/></td>
                                     <td><input type="text" className="form-control"/></td>
-                                    <td><input type="text" className="form-control"/></td>
+                                    <td>
+                                        <input type="file" hidden/>
+                                        <button className="button-ku">Choose an image</button>
+                                    </td>
                                     <td><button className="button-ku">Add Product</button></td>
                                 </tr>
                             </tbody>
