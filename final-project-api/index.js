@@ -61,7 +61,7 @@ app.get('/products/productdata', (req, res) => {
 })
 
 app.post('/products/addproduct', upload.single('products'), (req, res) => {
-    db.query(`insert into products values(0, '${req.body.productName}', '${req.body.productDesc}', ${req.body.productPrice}, 'files/${req.file.filename}')`, (err, result) => {
+    db.query(`insert into products values(0, '${req.body.name}', '${req.body.desc}', ${req.body.price}, 'files/${req.file.filename}')`, (err, result) => {
         try {
             if(err) throw err
             res.send(`Successfully add a product!`)

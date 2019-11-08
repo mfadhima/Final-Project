@@ -14,3 +14,10 @@
     border: 1px solid black;
     color: black;
 }
+
+.alert-ku {
+    position: relative;
+    padding: 5px 10px;
+    border: 1px solid transparent;
+    margin-top: 5px;
+}
