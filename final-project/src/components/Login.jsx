@@ -9,7 +9,9 @@ import {onLoginUser} from './1.actions/index'
 class Login extends Component {
     state = {
         inputEmail: '',
-        inputPassword: ''
+        inputPassword: '',
+        inputEmailForgot: '',
+        forgotPassword: false
     }
 
     onLoginClick = () => {
@@ -30,20 +32,36 @@ class Login extends Component {
 
     render() {
         if(!this.props.userEmail) {
-            return (
-                <div className="container">
-                    <div className="card-login container">
-                        <p className="title-ku"> Login </p>
-                        <label htmlFor="email"> Email </label>
-                        <input onChange={(e) => {this.setState({inputEmail: e.target.value})}} placeholder="Email" id="email" type="text" required/>
-                        <label htmlFor="password"> Password </label>
-                        <input onChange={(e) => {this.setState({inputPassword: e.target.value})}} placeholder="Password" id="password" type="password" required/>
-                        <p> Forgot your password? </p>
-                        <button onClick={this.onLoginClick} className="button-ku"> Login </button>
-                        {this.notification()}
+            if(!this.state.forgotPassword) {
+                return(
+                    <div className="container">
+                        <div className="card-login container">
+                            <p className="title-ku"> Login </p>
+                            <label htmlFor="email"> Email </label>
+                            <input onChange={(e) => {this.setState({inputEmail: e.target.value})}} placeholder="Email" id="email" type="text" required/>
+                            <label htmlFor="password"> Password </label>
+                            <input onChange={(e) => {this.setState({inputPassword: e.target.value})}} placeholder="Password" id="password" type="password" required/>
+                            <p className="forgot-password" onClick={()=>{this.setState({forgotPassword: !this.state.forgotPassword})}}> Forgot your password? </p>
+                            <button onClick={this.onLoginClick} className="button-ku"> Login </button>
+                            {this.notification()}
+                        </div>
                     </div>
-                </div>
-            )
+                )
+            } else {
+                return(
+                    <div className="container">
+                        <div className="card-login container">
+                            <p className="title-ku"> Reset your password </p>
+                            <p> We will send you an email to reset your password </p>
+                            <label htmlFor="email-forgot"> Email </label>
+                            <input onChange={(e) => {this.setState({inputEmailForgot: e.target.value})}} placeholder="Password" id="email-forgot" type="email"/>
+                            <button onClick={this.onSubmitClick} className="button-ku mr-3"> Submit </button>
+                            <button onClick={()=>{this.setState({forgotPassword: !this.state.forgotPassword})}} className="button-ku"> Cancel </button>
+                            {/* {this.notification()} */}
+                        </div>
+                    </div>
+                )
+            }
         } else {
             return <Redirect to="/"/>
         }

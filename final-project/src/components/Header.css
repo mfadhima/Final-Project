@@ -57,6 +57,13 @@
     text-decoration: none;
 }
 
+.header-akhir {
+    border-bottom-color: #ebebeb;
+    border-bottom-width: 1px;
+    border-bottom-style: double;
+    margin-bottom: 20px;
+}
+
 .user-dropdown {
     color: black;
     background-color: white;

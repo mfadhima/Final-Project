@@ -54,9 +54,28 @@
     color: black;
 }
 
+.button-ku-cancel {
+    color: rgb(65, 65, 65);
+    background-color: white;
+    border: 1px solid black;
+    padding: 3px 10px;
+    align-items: center;
+    margin-top: 10px;
+    transition: all 0.3s ease 0s;
+}
+
+.button-ku-cancel:hover {
+    color: rgb(65, 65, 65);
+    background-color: rgb(200, 200, 200);
+}
+
 .alert-ku {
     position: relative;
     padding: 5px 10px;
     border: 1px solid transparent;
     margin-top: 5px;
+}
+
+.forgot-password:hover {
+    cursor: pointer;
 }

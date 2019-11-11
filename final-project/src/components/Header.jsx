@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {Dropdown, DropdownItem, DropdownToggle, DropdownMenu} from 'reactstrap'
+import {IoMdCart} from 'react-icons/io'
 import './Header.css'
 import {onLogoutUser} from './1.actions/index'
 
@@ -43,10 +44,11 @@ class Header extends Component {
                         </div>
                     </div>
 
-                    <div className="header-ku justify-content-center">
+                    <div className="header-ku header-akhir justify-content-center">
                         <div>Brand 1</div>
                         <div className="mx-5">Brand 2</div>
-                        <div>Brand 3</div>
+                        <div className="mr-5">Brand 3</div>
+                        <div>All Products</div>
                     </div>
     
                 </div>
@@ -83,7 +85,11 @@ class Header extends Component {
                             </Dropdown>
 
                             <div>
-                                <button style={{borderLeft : '1px solid lightgrey', paddingRight : '1rem'}} className="btn" onClick={this.props.onLogoutUser}> Logout </button>
+                                <button style={{borderLeft : '1px solid lightgrey', borderRight : '1px solid lightgrey'}} className="btn" onClick={this.props.onLogoutUser}> Logout </button>
+                            </div>
+
+                            <div className="ml-2" style={{paddingTop: "7px", cursor: "pointer"}}>
+                                <div><IoMdCart/></div>
                             </div>
                         </div>
     
@@ -98,7 +104,8 @@ class Header extends Component {
                     <div className="header-ku justify-content-center">
                         <div>Brand 1</div>
                         <div className="mx-5">Brand 2</div>
-                        <div>Brand 3</div>
+                        <div className="mr-5">Brand 3</div>
+                        <div>All Products</div>
                     </div>
     
                 </div>
@@ -149,7 +156,8 @@ class Header extends Component {
                     <div className="header-ku justify-content-center">
                         <div>Brand 1</div>
                         <div className="mx-5">Brand 2</div>
-                        <div>Brand 3</div>
+                        <div className="mr-5">Brand 3</div>
+                        <div>All Products</div>
                     </div>
     
                 </div>
