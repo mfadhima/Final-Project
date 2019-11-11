@@ -20,7 +20,7 @@ app.get(`/`, (req, res) => {
 app.use('/auth', authRouter)
 
 
-// UPLOAD PRODUCT //
+// ADD PRODUCT ================================================================================= //
 let multerStorageConfig = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, './productImage')
@@ -70,7 +70,7 @@ app.post('/products/addproduct', upload.single('products'), (req, res) => {
         }
     })
 })
-// ============== //
+// ============================================================================================= //
 
 
 app.listen(port, console.log(`Listening to our favourite song.... (${port})`))
