@@ -33,13 +33,17 @@ class ManageProducts extends Component {
     }
 
     renderProduct = () => {
-        return this.state.productData.map((value, i) => {
+        return this.state.productData.map((value) => {
             return(
                 <tr key={value.id}>
                     <td>{value.name}</td>
                     <td>{value.desc}</td>
                     <td>Rp {parseInt(value.price).toLocaleString('IN')}</td>
-                    <td><img src={URL_API + value.image} alt="product" width="50px"/></td>
+                    <td><img src={URL_API + value.image} alt="product" width="100px"/></td>
+                    <td>
+                        <button>Edit</button>
+                        <button>Delete</button>
+                    </td>
                 </tr>
             )
         })
@@ -58,7 +62,10 @@ class ManageProducts extends Component {
                 URL_API + 'products/addproduct', fd
             ).then((res) => {
                 console.log(res)
-                this.setState({message: res.data})
+                this.setState({
+                    message: res.data
+                })
+                this.getProductData()
             }).catch((err) => {
                 console.log(err)
             })
@@ -122,6 +129,7 @@ class ManageProducts extends Component {
                                     <th>Description</th>
                                     <th>Price</th>
                                     <th>Image</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
