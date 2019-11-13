@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {Link} from 'react-router-dom'
 import '../styles/Footer.css'
 
 class Footer extends Component {
@@ -23,10 +24,9 @@ class Footer extends Component {
                         </div>
                         <div className="col-3">
                             <h5>Menu</h5>
-                            <a href="http://" target="_blank" rel="noopener noreferrer">Link 1</a><br/>
-                            <a href="http://" target="_blank" rel="noopener noreferrer">Link 2</a><br/>
-                            <a href="http://" target="_blank" rel="noopener noreferrer">Link 3</a><br/>
-                            <a href="http://" target="_blank" rel="noopener noreferrer">Link 4</a>
+                            <Link to="/brand1">Brand 1</Link><br/>
+                            <Link to="/brand2">Brand 2</Link><br/>
+                            <Link to="/allproducts">All Products</Link>
                         </div>
                     </div>
                 </footer>
