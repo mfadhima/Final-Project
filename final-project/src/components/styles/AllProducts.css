@@ -1,0 +1,21 @@
+.card-ku {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+}
+
+.button-ku {
+    color: white;
+    background-color: rgb(65, 65, 65);
+    display: block;
+    width: 100%;
+    border: none;
+    padding: 5px 10px;
+    align-items: center;
+    transition: all 0.3s ease 0s;
+}

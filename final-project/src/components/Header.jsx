@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {Dropdown, DropdownItem, DropdownToggle, DropdownMenu} from 'reactstrap'
 import {IoMdCart} from 'react-icons/io'
-import './Header.css'
+import './styles/Header.css'
 import {onLogoutUser} from './1.actions/index'
 
 class Header extends Component {
@@ -47,8 +47,9 @@ class Header extends Component {
                     <div className="header-ku header-akhir justify-content-center">
                         <div>Brand 1</div>
                         <div className="mx-5">Brand 2</div>
-                        <div className="mr-5">Brand 3</div>
-                        <div>All Products</div>
+                        <div>
+                            <Link to="/allproducts">All Products</Link>
+                        </div>
                     </div>
     
                 </div>
@@ -75,7 +76,7 @@ class Header extends Component {
                             </div> */}
                             <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
                                 <DropdownToggle className="user-dropdown" caret>
-                                    Your Account
+                                    Hello {this.props.firstName}
                                 </DropdownToggle>
                                 <DropdownMenu>
                                     <DropdownItem>Account Info</DropdownItem>
@@ -89,7 +90,9 @@ class Header extends Component {
                             </div>
 
                             <div className="ml-2" style={{paddingTop: "7px", cursor: "pointer"}}>
-                                <div><IoMdCart/></div>
+                                <Link to="/cart">
+                                    <div><IoMdCart/><sub>0</sub></div>
+                                </Link>
                             </div>
                         </div>
     
@@ -104,8 +107,9 @@ class Header extends Component {
                     <div className="header-ku justify-content-center">
                         <div>Brand 1</div>
                         <div className="mx-5">Brand 2</div>
-                        <div className="mr-5">Brand 3</div>
-                        <div>All Products</div>
+                        <div>
+                            <Link to="/allproducts">All Products</Link>
+                        </div>
                     </div>
     
                 </div>
@@ -156,8 +160,9 @@ class Header extends Component {
                     <div className="header-ku justify-content-center">
                         <div>Brand 1</div>
                         <div className="mx-5">Brand 2</div>
-                        <div className="mr-5">Brand 3</div>
-                        <div>All Products</div>
+                        <div>
+                            <Link to="/allproducts">All Products</Link>
+                        </div>
                     </div>
     
                 </div>
@@ -169,7 +174,8 @@ class Header extends Component {
 const mapStateToProps = (state) => {
     return {
         userEmail: state.auth.email,
-        role: state.auth.role
+        role: state.auth.role,
+        firstName: state.auth.firstName
     }
 }
 

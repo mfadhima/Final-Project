@@ -24,15 +24,15 @@ export const onLoginUser = (EMAIL, PASSWORD) => {
                     }
                 })
             } else if(res.data.status === '200') {
-                let {id, email, role} = res.data.result
+                let {id, email, role, firstName, lastName} = res.data.result
                 localStorage.setItem(
                     'userData',
-                    JSON.stringify({id, email, role})
+                    JSON.stringify({id, email, role, firstName, lastName})
                 )
                 dispatch({
                     type: 'LOGIN_SUCCESS',
                     payload: {
-                        id, email, role
+                        id, email, role, firstName, lastName
                     }
                 })
             }

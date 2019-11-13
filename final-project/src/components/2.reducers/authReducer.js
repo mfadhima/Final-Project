@@ -2,6 +2,8 @@ const INITIAL_STATE = {
     id: '',
     email: '',
     role: '',
+    firstName: '',
+    lastName: '',
     statusCode: '',
     errorMessage: ''
 }
@@ -14,6 +16,8 @@ export default(state = INITIAL_STATE, action) => {
                 id: action.payload.id,
                 email: action.payload.email,
                 role: action.payload.role,
+                firstName: action.payload.firstName,
+                lastName: action.payload.lastName,
                 statusCode: '',
                 errorMessage: ''
             }
