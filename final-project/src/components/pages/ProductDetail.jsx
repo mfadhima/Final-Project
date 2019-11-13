@@ -6,7 +6,8 @@ const URL_API = 'http://localhost:8888/'
 
 class ProductDetail extends Component {
     state = {
-        products: null
+        products: null,
+        message: ''
     }
 
     componentDidMount() {
@@ -18,7 +19,6 @@ class ProductDetail extends Component {
             URL_API + `products/productdetail/${this.props.match.params.id}`
         ).then((res) => {
             this.setState({products: res.data[0]})
-            console.log(this.state.products)
         }).catch((err) => {
             console.log(err)
         })
@@ -33,49 +33,79 @@ class ProductDetail extends Component {
         let productImage = this.state.products.image
         let quantity = 1
 
-        Axios.get(
-            URL_API + 'carts/checkcart',
-            {
-                params: {
-                    userId,
-                    productId
-                }
-            }
-        ).then((res) => {
-            if(res.data.length === 0) {
-                Axios.post(
-                    URL_API + 'carts/addtocart',
-                    {
-                        productId,
-                        productName,
-                        productDesc,
-                        productPrice,
-                        productImage,
+        if(this.props.role !== 'user') {
+            this.setState({
+                message: 'Please Log in to continue shopping..'
+            })
+        } else {
+            Axios.get(
+                URL_API + 'carts/checkcart',
+                {
+                    params: {
                         userId,
-                        quantity
+                        productId
                     }
-                ).then((res2) => {
-                    console.log(res2.data)
-                }).catch((err2) => {
-                    console.log(err2)
-                })
-            } else {
-                let newQuantity = res.data[0].quantity + 1
+                }
+            ).then((res) => {
+                if(res.data.length === 0) {
+                    Axios.post(
+                        URL_API + 'carts/addtocart',
+                        {
+                            productId,
+                            productName,
+                            productDesc,
+                            productPrice,
+                            productImage,
+                            userId,
+                            quantity
+                        }
+                    ).then((res2) => {
+                        console.log(res2.data)
+                        this.setState({message: res2.data})
+                    }).catch((err2) => {
+                        console.log(err2)
+                    })
+                } else {
+                    let newQuantity = res.data[0].quantity + 1
+    
+                    Axios.put(
+                        URL_API + `carts/addsameproduct/${res.data[0].id}`,
+                        {
+                            quantity: newQuantity
+                        }
+                    ).then((res3) => {
+                        console.log(res3.data)
+                        this.setState({message: res3.data})
+                    }).catch((err3) => {
+                        console.log(err3)
+                    })
+                }
+            }).catch((err) => {
+                console.log(err)
+            })
+        }
+    }
 
-                Axios.put(
-                    URL_API + `carts/addsameproduct/${res.data[0].id}`,
-                    {
-                        quantity: newQuantity
-                    }
-                ).then((res3) => {
-                    console.log(res3.data)
-                }).catch((err3) => {
-                    console.log(err3)
-                })
+    notification = () => {
+        if(!this.state.message) {
+            return null
+        } else {
+            if(this.state.message === 'Please Log in to continue shopping..') {
+                setTimeout(() => {
+                    this.setState({message: ''})
+                }, 3000);
+                return(
+                    <div className="alert-ku alert-danger text-center">{this.state.message}</div>
+                )
+            } else {
+                setTimeout(() => {
+                    this.setState({message: ''})
+                }, 3000);
+                return(
+                    <div className="alert-ku alert-success text-center">{this.state.message}</div>
+                )
             }
-        }).catch((err) => {
-            console.log(err)
-        })
+        }
     }
 
     render() {
@@ -104,6 +134,7 @@ class ProductDetail extends Component {
                             <p>{this.state.products.desc}</p>
                             <p style={{fontWeight: "bold"}}>Price : Rp {parseInt(price).toLocaleString('IN')}</p>
                             <button onClick={this.onAddToCart} className="button-ku mb-3">Add To Cart</button>
+                            {this.notification()}
                         </div>
                     </div>
                 </div>
@@ -116,7 +147,8 @@ class ProductDetail extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        userId: state.auth.id
+        userId: state.auth.id,
+        role: state.auth.role
     }
 }
 

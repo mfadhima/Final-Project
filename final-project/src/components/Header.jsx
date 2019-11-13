@@ -79,7 +79,7 @@ class Header extends Component {
                                     Hello {this.props.firstName}
                                 </DropdownToggle>
                                 <DropdownMenu>
-                                    <DropdownItem>Account Info</DropdownItem>
+                                    <DropdownItem><Link to="/accountinfo">Account Info</Link></DropdownItem>
                                     <DropdownItem>Address</DropdownItem>
                                     <DropdownItem>Change Password</DropdownItem>
                                 </DropdownMenu>
@@ -115,6 +115,7 @@ class Header extends Component {
                 </div>
             )
         } else {
+            // HEADER FOR ADMIN
             return (
                 <div className="container">
     
@@ -140,7 +141,7 @@ class Header extends Component {
                                 </DropdownToggle>
                                 <DropdownMenu>
                                     <DropdownItem> <Link to="/manageproducts">Manage Product</Link> </DropdownItem>
-                                    <DropdownItem>Transaction</DropdownItem>
+                                    <DropdownItem><Link to="/transaction">Transaction</Link></DropdownItem>
                                 </DropdownMenu>
                             </Dropdown>
 

@@ -137,6 +137,57 @@ app.post('/transactions/completetransaction', (req, res) => {
         }
     })
 })
+
+// GET TRANSACTION FOR USER //
+app.get('/transactions/getuserorder', (req, res) => {
+    let sql = `select id, transactionDate, totalPrice, isVerified from transactions where userId = ${req.query.userId}`
+    db.query(sql, (err, result) => {
+        try {
+            if(err) throw err
+            res.send(result)
+        } catch(err) {
+            console.log(err)
+        }
+    })
+})
+
+// GET TRANSACTION FOR ADMIN //
+app.get('/transactions/gettransaction', (req, res) => {
+    let sql = `select * from transactions`
+    db.query(sql, (err, result) => {
+        try {
+            if(err) throw err
+            res.send(result)
+        } catch(err) {
+            console.log(err)
+        }
+    })
+})
+
+app.put('/transactions/uploadreceipt/:id', upload2.single('receipt'), (req, res) => {
+    let sql = `update transactions set receipt = 'receipts/${req.file.filename}' where id = ${req.params.id}`
+    db.query(sql, (err, result) => {
+        try {
+            if(err) throw err
+            res.send('Receipt Uploaded')
+        } catch(err) {
+            console.log(err)
+        }
+    })
+})
+
+// VERIFY PAYMENT //
+app.put('/transactions/verifypayment/:id', (req, res) => {
+    let sql = `update transactions set isVerified = 1 where id = ${req.params.id}`
+    db.query(sql, (err, result) => {
+        try {
+            if(err) throw err
+            res.send('Payment Verified')
+        } catch(err) {
+            console.log(err)
+        }
+    })
+})
 // ============================================================================================= //
 
 

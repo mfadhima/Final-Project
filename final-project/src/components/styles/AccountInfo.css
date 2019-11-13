@@ -1,0 +1,33 @@
+.button-ku {
+    color: white;
+    font-size: 14px;
+    background-color: rgb(65, 65, 65);
+    border: 1px solid rgb(65, 65, 65);
+    padding: 5px 10px;
+    align-items: center;
+    transition: all 0.3s ease 0s;
+    border-radius: 0;
+}
+
+.button-ku:hover {
+    background-color: white;
+    border: 1px solid rgb(65, 65, 65);
+    color: rgb(65, 65, 65);
+}
+
+.button-ku-save {
+    color: rgb(65, 65, 65);
+    background-color: white;
+    border: 1px solid rgb(65, 65, 65);
+    font-size: 14px;
+    padding: 5px 10px;
+    align-items: center;
+    transition: all 0.3s ease 0s;
+    border-radius: 0;
+}
+
+.button-ku-save:hover {
+    color: white;
+    background-color: rgb(65, 65, 65);
+    border: 1px solid rgb(65, 65, 65);
+}

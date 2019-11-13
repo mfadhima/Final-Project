@@ -46,7 +46,9 @@ export const keepLogin = (USER) => {
         payload: {
             id: USER.id,
             email: USER.email,
-            role: USER.role
+            role: USER.role,
+            firstName: USER.firstName,
+            lastName: USER.lastName
         }
     }
 }

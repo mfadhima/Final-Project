@@ -13,6 +13,7 @@ import AllProducts from './pages/AllProducts'
 import ProductDetail from './pages/ProductDetail'
 import Cart from './pages/Cart'
 import AccountInfo from './pages/AccountInfo'
+import Transaction from './pages/Transaction'
 
 import {keepLogin} from './1.actions/index'
 
@@ -43,6 +44,7 @@ class App extends Component {
                         <Route path='/productdetail/:id' component={ProductDetail} />
                         <Route path='/cart' component={Cart} />
                         <Route path='/accountinfo' component={AccountInfo} />
+                        <Route path='/transaction' component={Transaction} />
                         <Footer/>
                     </BrowserRouter>
                 </div>
