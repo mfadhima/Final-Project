@@ -4,7 +4,7 @@ import {Redirect} from 'react-router-dom'
 import '../styles/Cart.css'
 import Axios from 'axios'
 
-import Checkout from '../Checkout'
+import Checkout from '../components/Checkout'
 
 const URL_API = 'http://localhost:8888/'
 

@@ -3,8 +3,8 @@ import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {Dropdown, DropdownItem, DropdownToggle, DropdownMenu} from 'reactstrap'
 import {IoMdCart} from 'react-icons/io'
-import './styles/Header.css'
-import {onLogoutUser} from './1.actions/index'
+import '../styles/Header.css'
+import {onLogoutUser} from '../1.actions/index'
 
 class Header extends Component {
     state = {

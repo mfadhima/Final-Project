@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import Carouselku from '../Carouselku'
+import Carouselku from '../components/Carouselku'
 
 class Home extends Component {
     render() {

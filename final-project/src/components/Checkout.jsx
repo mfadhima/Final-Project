@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './styles/Cart.css'
+import '../styles/Cart.css'
 import Axios from 'axios'
 
 const URL_API = 'http://localhost:8888/'

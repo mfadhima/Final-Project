@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Axios from 'axios'
-import ProductItem from '../ProductItem'
+import ProductItem from '../components/ProductItem'
 import '../styles/AllProducts.css'
 
 const URL_API = 'http://localhost:8888/'
