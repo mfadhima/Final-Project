@@ -20,7 +20,7 @@ class AllProduct extends Component {
 
     getProductData = () => {
         Axios.get(
-            URL_API + 'products/productdata'
+            URL_API + 'products/productguteninc'
         ).then((res) => {
             this.setState({
                 products: res.data,

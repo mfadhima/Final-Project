@@ -10,6 +10,8 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import ManageProducts from './pages/ManageProducts'
 import AllProducts from './pages/AllProducts'
+import Brand1 from './pages/Brand1'
+import Brand2 from './pages/Brand2'
 import ProductDetail from './pages/ProductDetail'
 import Cart from './pages/Cart'
 import AccountInfo from './pages/AccountInfo'
@@ -41,6 +43,8 @@ class App extends Component {
                         <Route path='/register' component={Register}/>
                         <Route path='/login' component={Login}/>
                         <Route path='/allproducts' component={AllProducts}/>
+                        <Route path='/brand1' component={Brand1}/>
+                        <Route path='/brand2' component={Brand2}/>
                         <Route path='/productdetail/:id' component={ProductDetail} />
                         <Route path='/cart' component={Cart} />
                         <Route path='/accountinfo' component={AccountInfo} />

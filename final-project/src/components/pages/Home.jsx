@@ -8,7 +8,7 @@ class Home extends Component {
             <div>
                 <Carouselku/>
                 <div>
-                    <h1 className="text-center">Home</h1>
+                    {/* <h1 className="text-center">Home</h1> */}
                 </div>
             </div>
         )

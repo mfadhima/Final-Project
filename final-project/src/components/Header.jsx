@@ -45,8 +45,8 @@ class Header extends Component {
                     </div>
 
                     <div className="header-ku header-akhir justify-content-center">
-                        <div>Brand 1</div>
-                        <div className="mx-5">Brand 2</div>
+                        <div><Link to="/brand1">Brand 1</Link></div>
+                        <div className="mx-5"><Link to="/brand2">Brand 2</Link></div>
                         <div>
                             <Link to="/allproducts">All Products</Link>
                         </div>
@@ -91,7 +91,7 @@ class Header extends Component {
 
                             <div className="ml-2" style={{paddingTop: "7px", cursor: "pointer"}}>
                                 <Link to="/cart">
-                                    <div><IoMdCart/><sub>0</sub></div>
+                                    <div><IoMdCart/></div>
                                 </Link>
                             </div>
                         </div>
@@ -105,8 +105,8 @@ class Header extends Component {
                     </div>
 
                     <div className="header-ku justify-content-center">
-                        <div>Brand 1</div>
-                        <div className="mx-5">Brand 2</div>
+                        <div><Link to="/brand1">Brand 1</Link></div>
+                        <div className="mx-5"><Link to="/brand2">Brand 2</Link></div>
                         <div>
                             <Link to="/allproducts">All Products</Link>
                         </div>
@@ -159,8 +159,8 @@ class Header extends Component {
                     </div>
 
                     <div className="header-ku justify-content-center">
-                        <div>Brand 1</div>
-                        <div className="mx-5">Brand 2</div>
+                        <div><Link to="/brand1">Brand 1</Link></div>
+                        <div className="mx-5"><Link to="/brand2">Brand 2</Link></div>
                         <div>
                             <Link to="/allproducts">All Products</Link>
                         </div>

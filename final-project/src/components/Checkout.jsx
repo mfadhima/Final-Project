@@ -73,7 +73,7 @@ class Checkout extends Component {
         return(
             <tr>
                 <th colSpan="4">Total</th>
-                <td>{total.toLocaleString('IN')}</td>
+                <td>Rp {total.toLocaleString('IN')}</td>
             </tr>
         )
     }

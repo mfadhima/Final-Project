@@ -51,8 +51,31 @@ let upload = multer(
     }
 )
 
+// GET ALL PRODUCTS //
 app.get('/products/productdata', (req, res) => {
     db.query(`select * from products`, (err, result) => {
+        try {
+            if(err) throw err
+            res.send(result)
+        } catch (err) {
+            console.log(err)
+        }
+    })
+})
+
+app.get('/products/productbrodo', (req, res) => {
+    db.query(`select * from products where name like '%Brodo%'`, (err, result) => {
+        try {
+            if(err) throw err
+            res.send(result)
+        } catch (err) {
+            console.log(err)
+        }
+    })
+})
+
+app.get('/products/productguteninc', (req, res) => {
+    db.query(`select * from products where name like '%GutenInc%'`, (err, result) => {
         try {
             if(err) throw err
             res.send(result)

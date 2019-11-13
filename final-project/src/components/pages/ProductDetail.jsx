@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Axios from 'axios'
 import {connect} from 'react-redux'
+import '../styles/ProductDetail.css'
 
 const URL_API = 'http://localhost:8888/'
 

@@ -30,7 +30,12 @@ module.exports = {
             try {
                 if(err) throw err
                 if(result.length > 0) {
-                    if(req.query.password === result[0].password) {
+                    if(result[0].isVerified === 0) {
+                        res.send({
+                            status: '403',
+                            message: 'Please verify your account before login.'
+                        })
+                    } else if(req.query.password === result[0].password) {
                         res.send({
                             status: '200',
                             result: result[0]
