@@ -63,15 +63,16 @@ class Cart extends Component {
     renderCart = () => {
         return this.state.carts.map((val) => {
             let image = URL_API + val.productImage
+            let productPrice = val.productPrice
             return (
                 <tr key={val.id}>
                     <td>
                         <img src={image} alt="" width="200px"/>
                     </td>
                     <td>{val.productName}</td>
-                    <td>{val.productPrice}</td>
+                    <td>Rp {productPrice.toLocaleString('IN')}</td>
                     <td>{val.quantity}</td>
-                    <td><button onClick={() => {this.onDeleteClick(val.id)}} className="button-ku">Delete</button></td>
+                    <td><button onClick={() => {this.onDeleteClick(val.id)}} className="button-ku-delete">Delete</button></td>
                 </tr>
             )
         })

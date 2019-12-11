@@ -12,11 +12,12 @@ class Header extends Component {
     }
 
     toggle = () => {
-        if(this.state.dropdownOpen === false) {
-            this.setState({dropdownOpen: true})
-        } else {
-            this.setState({dropdownOpen: false})
-        }
+        // if(this.state.dropdownOpen === false) {
+        //     this.setState({dropdownOpen: true})
+        // } else {
+        //     this.setState({dropdownOpen: false})
+        // }
+        this.setState({dropdownOpen: !this.state.dropdownOpen})
     }
 
     render() {

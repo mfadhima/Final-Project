@@ -74,19 +74,35 @@ class ManageProducts extends Component {
     }
 
     onSaveClick = (productId) => {
-        let fd = new FormData()
-        fd.append('products', this.state.selectedImage, this.state.selectedImage.name)
-        fd.append('name', this.state.selectedName)
-        fd.append('desc', this.state.selectedDesc)
-        fd.append('price', this.state.selectedPrice)
         Axios.put(
-            URL_API + `products/editproduct/${productId}`, fd
-        ).then((res) => {
-            console.log(res.data)
+            URL_API + `products/editproduct/${productId}`,
+            {
+                name: this.state.selectedName,
+                desc: this.state.selectedDesc,
+                price: this.state.selectedPrice
+            }
+        ).then((res2) => {
             this.getProductData()
-        }).catch((err) => {
-            console.log(err)
+            let fd = new FormData()
+            fd.append('products', this.state.selectedImage, this.state.selectedImage.name)
+            fd.append('name', this.state.selectedName)
+            fd.append('desc', this.state.selectedDesc)
+            fd.append('price', this.state.selectedPrice)
+            Axios.put(
+                URL_API + `products/editproductphoto/${productId}`, fd
+            ).then((res) => {
+                console.log(res.data)
+                this.getProductData()
+                
+            }).catch((err) => {
+                console.log(err)
+            })
+            // console.log(res2.data)
+            // this.getProductData()
+        }).catch((err2) => {
+            console.log(err2)
         })
+        
     }
 
     onDeleteClick = (id) => {

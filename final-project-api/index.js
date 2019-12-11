@@ -107,8 +107,19 @@ app.post('/products/addproduct', upload.single('products'), (req, res) => {
     })
 })
 
-app.put('/products/editproduct/:id', upload.single('products'), (req, res) => {
-    db.query(`update products set name = '${req.body.name}', desc = '${req.body.desc}', price = ${req.body.price}, image = 'files/${req.file.filename}' where id = ${req.params.id}`, (err, result) => {
+app.put('/products/editproductphoto/:id', upload.single('products'), (req, res) => {
+    db.query(`update products set image = 'files/${req.file.filename}' where id = ${req.params.id}`, (err, result) => {
+        try {
+            if(err) throw err
+            res.send(`Successfully edit a product!`)
+        } catch (err) {
+            console.log(err)
+        }
+    })
+})
+
+app.put('/products/editproduct/:id', (req, res) => {
+    db.query(`update products set name = '${req.body.name}', products.desc = '${req.body.desc}', price = ${req.body.price} where id = ${req.params.id}`, (err, result) => {
         try {
             if(err) throw err
             res.send(`Successfully edit a product!`)

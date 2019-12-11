@@ -60,7 +60,9 @@ class AllProduct extends Component {
     render() {
         return(
             <div className="container">
+
                 <div className="row">
+
                     <div className="col-4 mt-3">
                         <h2>Filter Product</h2> <hr/>
                         <div className="card-ku">
@@ -83,11 +85,13 @@ class AllProduct extends Component {
                             </div>
                         </div>
                     </div>
+
                     <div className="col-8">
                         <div className="row">
                             {this.renderProductData()}
                         </div>
                     </div>
+                    
                 </div>
             </div>
         )

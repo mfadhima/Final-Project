@@ -13,18 +13,18 @@ let transporter = nodeMailer.createTransport({
 })
 
 module.exports = {
-    checkUser : (req, res) => {
-        db.query(`select * from users`, (err, result) => {
-            try {
-                if(err) throw err
-                res.send(result)
-            } catch (err) {
-                console.log(err)
-            }
-        })
-    },
+    // checkUser : (req, res) => {
+    //     db.query(`select * from users`, (err, result) => {
+    //         try {
+    //             if(err) throw err
+    //             res.send(result)
+    //         } catch (err) {
+    //             console.log(err)
+    //         }
+    //     })
+    // },
 
-    Login : (req, res) => {
+    login : (req, res) => {
         let sql = `select * from users where email = '${req.query.email}'`
         db.query(sql, (err, result) => {
             try {

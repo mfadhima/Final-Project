@@ -6,7 +6,8 @@ const URL_API = 'http://localhost:8888/'
 
 class Checkout extends Component {
     state = {
-        message: ''
+        message: '',
+        completeOrder: 0
     }
 
     onCompleteOrder = () => {
@@ -24,7 +25,10 @@ class Checkout extends Component {
             }
         ).then((res) => {
             // console.log(res.data)
-            this.setState({message: res.data})
+            this.setState({
+                message: res.data,
+                completeOrder: 1
+            })
             // CLEAN USER'S CART
             Axios.delete(
                 URL_API + `carts/deletefullcart/${this.props.userId}`
@@ -36,6 +40,17 @@ class Checkout extends Component {
         }).catch((err) => {
             console.log(err)
         })
+    }
+
+    completeOrderButton = () => {
+        let completeButton
+        if(this.state.completeOrder === 0) {
+            completeButton = <button className="button-ku-checkout btn-block">Complete Order</button>
+        } else {
+            completeButton = null
+        }
+
+        return completeButton
     }
 
     notification = () => {
@@ -50,13 +65,15 @@ class Checkout extends Component {
 
     renderCheckout = () => {
         return this.props.carts.map((val) => {
+            let productPrice = val.productPrice
+            let totalPrice = val.productPrice * val.quantity
             return(
                 <tr key={val.id}>
                     <td>{val.id}</td>
                     <td>{val.productName}</td>
-                    <td>{val.productPrice}</td>
+                    <td>Rp {productPrice.toLocaleString('IN')}</td>
                     <td>{val.quantity}</td>
-                    <td>{val.productPrice * val.quantity}</td>
+                    <td>Rp {totalPrice.toLocaleString('IN')}</td>
                 </tr>
             )
         })
@@ -99,7 +116,7 @@ class Checkout extends Component {
                                 {this.renderTotalPrice()}
                             </tbody>
                         </table>
-                        <button onClick={this.onCompleteOrder} className="button-ku-checkout btn-block">Complete Order</button>
+                        <div onClick={this.onCompleteOrder}>{this.completeOrderButton()}</div>
                         {this.notification()}
                     </div>
                 </div>
