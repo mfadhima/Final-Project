@@ -5,10 +5,14 @@ import {Dropdown, DropdownItem, DropdownToggle, DropdownMenu} from 'reactstrap'
 import {IoMdCart} from 'react-icons/io'
 import '../styles/Header.css'
 import {onLogoutUser} from '../1.actions/index'
+// import Axios from 'axios'
+
+// const URL_API = 'http://localhost:8888/'
 
 class Header extends Component {
     state = {
-        dropdownOpen: false
+        dropdownOpen: false,
+        // quantityCart: 0
     }
 
     toggle = () => {
@@ -20,17 +24,38 @@ class Header extends Component {
         this.setState({dropdownOpen: !this.state.dropdownOpen})
     }
 
+    // componentDidMount() {
+    //     this.getTotalCart()
+    // }
+
+    // getTotalCart = () => {
+    //     Axios.get(
+    //         URL_API + 'carts/getcart',
+    //         {
+    //             params: {
+    //                 userId: this.props.userId
+    //             }
+    //         }
+    //     ).then((res) => {
+    //         this.setState({quantityCart: res.data.length})
+    //         // console.log(this.state.quantityCart)
+    //     }).catch((err) => {
+    //         console.log(err)
+    //     })
+    // }
+
     render() {
+        // BELUM LOGIN
         if(!this.props.userEmail) {
             return (
                 <div className="container">
     
                     <div className="header-ku">
     
-                        <div className="search-area">
+                        {/* <div className="search-area">
                             <div style={{marginTop:'3px'}} className="mr-2"> <input placeholder="Search our product" type="text"/> </div>
                             <div> <button className="button-ku"> Search </button> </div>
-                        </div>
+                        </div> */}
     
                         <div className="account-area">
                             <div style={{borderRight : '1px solid lightgrey', paddingRight : '1rem'}}> <Link to="/register"> Register </Link> </div>
@@ -61,10 +86,10 @@ class Header extends Component {
     
                     <div className="header-ku">
     
-                        <div className="search-area">
+                        {/* <div className="search-area">
                             <div style={{marginTop:'3px'}} className="mr-2"> <input placeholder="Search our product" type="text"/> </div>
                             <div> <button className="button-ku"> Search </button> </div>
-                        </div>
+                        </div> */}
     
                         <div className="account-area">
                             {/* <div className="dropdown">
@@ -93,6 +118,7 @@ class Header extends Component {
                             <div className="ml-2" style={{paddingTop: "7px", cursor: "pointer"}}>
                                 <Link to="/cart">
                                     <div><IoMdCart/></div>
+                                    {/* <sub style={{color: '#8b0000'}}>{this.state.quantityCart}</sub> */}
                                 </Link>
                             </div>
                         </div>
@@ -122,10 +148,10 @@ class Header extends Component {
     
                     <div className="header-ku">
     
-                        <div className="search-area">
+                        {/* <div className="search-area">
                             <div style={{marginTop:'3px'}} className="mr-2"> <input placeholder="Search our product" type="text"/> </div>
                             <div> <button className="button-ku"> Search </button> </div>
-                        </div>
+                        </div> */}
     
                         <div className="account-area">
                             {/* <div className="dropdown">
@@ -176,6 +202,7 @@ class Header extends Component {
 const mapStateToProps = (state) => {
     return {
         userEmail: state.auth.email,
+        userId: state.auth.id,
         role: state.auth.role,
         firstName: state.auth.firstName
     }

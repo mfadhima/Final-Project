@@ -96,6 +96,7 @@ app.get('/products/productdetail/:id', (req, res) => {
     })
 })
 
+// ADD PRODUCT
 app.post('/products/addproduct', upload.single('products'), (req, res) => {
     db.query(`insert into products values(0, '${req.body.name}', '${req.body.desc}', ${req.body.price}, 'files/${req.file.filename}')`, (err, result) => {
         try {
@@ -107,6 +108,7 @@ app.post('/products/addproduct', upload.single('products'), (req, res) => {
     })
 })
 
+// EDIT PRODUCT PHOTO
 app.put('/products/editproductphoto/:id', upload.single('products'), (req, res) => {
     db.query(`update products set image = 'files/${req.file.filename}' where id = ${req.params.id}`, (err, result) => {
         try {
@@ -118,6 +120,7 @@ app.put('/products/editproductphoto/:id', upload.single('products'), (req, res) 
     })
 })
 
+// EDIT PRODUCT
 app.put('/products/editproduct/:id', (req, res) => {
     db.query(`update products set name = '${req.body.name}', products.desc = '${req.body.desc}', price = ${req.body.price} where id = ${req.params.id}`, (err, result) => {
         try {
@@ -129,6 +132,7 @@ app.put('/products/editproduct/:id', (req, res) => {
     })
 })
 
+// DELETE PRODUCT
 app.delete('/products/deleteproduct/:id', (req, res) => {
     db.query(`delete from products where id = ${req.params.id}`, (err, result) => {
         try {
@@ -159,6 +163,7 @@ let upload2 = multer(
     }
 )
 
+// USER CLICK COMPLETES ORDER
 app.post('/transactions/completetransaction', (req, res) => {
     let sql = `insert into transactions value(0, current_timestamp(), ${req.body.totalPrice},
                '', ${req.body.userId}, 0)`
@@ -174,7 +179,7 @@ app.post('/transactions/completetransaction', (req, res) => {
 
 // GET TRANSACTION FOR USER //
 app.get('/transactions/getuserorder', (req, res) => {
-    let sql = `select id, transactionDate, totalPrice, isVerified from transactions where userId = ${req.query.userId}`
+    let sql = `select * from transactions where userId = ${req.query.userId}`
     db.query(sql, (err, result) => {
         try {
             if(err) throw err
@@ -198,8 +203,9 @@ app.get('/transactions/gettransaction', (req, res) => {
     })
 })
 
+// USER UPLOADS PAYMENT RECEIPT
 app.put('/transactions/uploadreceipt/:id', upload2.single('receipt'), (req, res) => {
-    let sql = `update transactions set receipt = 'receipts/${req.file.filename}' where id = ${req.params.id}`
+    let sql = `update transactions set receipt = 'receipts/${req.file.filename}', isVerified = 0 where id = ${req.params.id}`
     db.query(sql, (err, result) => {
         try {
             if(err) throw err
@@ -217,6 +223,19 @@ app.put('/transactions/verifypayment/:id', (req, res) => {
         try {
             if(err) throw err
             res.send('Payment Verified')
+        } catch(err) {
+            console.log(err)
+        }
+    })
+})
+
+// REJECT PAYMENT //
+app.put('/transactions/rejectpayment/:id', (req, res) => {
+    let sql = `update transactions set isVerified = 2, receipt = '' where id = ${req.params.id}`
+    db.query(sql, (err, result) => {
+        try {
+            if(err) throw err
+            res.send('Payment Rejected')
         } catch(err) {
             console.log(err)
         }

@@ -46,14 +46,29 @@ class Transaction extends Component {
         })
     }
 
+    onRejectClick = (id) => {
+        Axios.put(
+            URL_API + `transactions/rejectpayment/${id}`
+        ).then((res) => {
+            this.setState({message: res.data})
+            this.getTransaction()
+        }).catch((err) => {
+            console.log(err)
+        })
+    }
+
     renderTransaction = () => {
         return this.state.transactions.map((val) => {
             let receipt = URL_API + val.receipt
             let verifyButton
+            let rejectButton
             if(val.isVerified === 0) {
-                verifyButton = <button className="btn btn-outline-info">Verify</button>
-            } else {
+                verifyButton = <button className="btn btn-outline-info mb-2 text-center">Verify</button>
+                rejectButton = <button className="btn btn-outline-danger text-center">Reject</button>
+            } else if(val.isVerified === 1) {
                 verifyButton = <button className="btn btn-outline-secondary disabled">Verified</button>
+            } else if(val.isVerified === 2) {
+                rejectButton = <button className="btn btn-outline-secondary disabled">Rejected</button>
             }
             return(
                 <tr key={val.id}>
@@ -61,7 +76,10 @@ class Transaction extends Component {
                     <td>{val.transactionDate}</td>
                     <td>Rp {val.totalPrice.toLocaleString('IN')}</td>
                     <td><img src={receipt} alt="" width="300px"/></td>
-                    <td><div onClick={() => {this.onVerifyClick(val.id)}}>{verifyButton}</div></td>
+                    <td>
+                        <div onClick={() => {this.onVerifyClick(val.id)}}>{verifyButton}</div>
+                        <div onClick={() => {this.onRejectClick(val.id)}}>{rejectButton}</div>
+                    </td>
                 </tr>
             )
         })

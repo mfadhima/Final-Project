@@ -52,6 +52,10 @@ module.exports = {
         })
     },
 
+    // editCart: (req, res) => {
+    //     let sql = `update `
+    // },
+
     deleteCart: (req, res) => {
         let sql = `delete from carts where id = ${req.params.id}`
         db.query(sql, (err, result) => {

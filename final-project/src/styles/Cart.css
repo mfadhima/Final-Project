@@ -41,15 +41,15 @@
 
 .button-ku-delete {
     color: white;
-    background-color: rgb(65, 65, 65);
-    border: none;
+    background-color: rgb(254, 82, 82);
+    border: 1px solid rgb(254, 82, 82);
     padding: 5px 10px;
     align-items: center;
     transition: all 0.3s ease 0s;
 }
 
 .button-ku-delete:hover {
-    background-color: rgb(254, 82, 82);
-    border: none;
-    color: white;
+    background-color: white;
+    border: 1px solid rgb(254, 82, 82);
+    color: rgb(254, 82, 82);
 }

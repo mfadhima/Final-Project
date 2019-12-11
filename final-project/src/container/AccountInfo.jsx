@@ -39,6 +39,7 @@ class AccountInfo extends Component {
             URL_API + `transactions/uploadreceipt/${id}`, fd
         ).then((res) => {
             this.setState({message: res.data})
+            this.getTransactionUser()
         }).catch((err) => {
             console.log(err)
         })
@@ -58,13 +59,17 @@ class AccountInfo extends Component {
         return this.state.transactions.map((val) => {
             let totalPrice = val.totalPrice
             let paymentStatus
-            if(val.isVerified === 0) {
+            if(val.isVerified === 0 && !val.receipt) {
                 paymentStatus = 'Pending'
+            } else if(val.isVerified === 0 && val.receipt) {
+                paymentStatus = 'Receipt Uploaded'
+            } else if(val.isVerified === 2) {
+                paymentStatus = 'Rejected'
             } else {
                 paymentStatus = 'Accepted'
             }
             let uploadReceipt
-            if(val.isVerified === 0) {
+            if(val.isVerified === 0 || val.isVerified === 2) {
                 uploadReceipt = <td>
                                     <input
                                         type="file"

@@ -11,7 +11,9 @@ const URL_API = 'http://localhost:8888/'
 class Cart extends Component {
     state = {
         carts: [],
-        checkouts: null
+        checkouts: null,
+        selectedId: 0,
+        selectedQty: 0
     }
 
     componentDidMount() {
@@ -27,10 +29,20 @@ class Cart extends Component {
                 }
             }
         ).then((res) => {
-            this.setState({carts: res.data})
+            this.setState({
+                carts: res.data,
+                selectedId: 0
+            })
             // console.log(this.state.carts)
         }).catch((err) => {
             console.log(err)
+        })
+    }
+
+    onEditClick = (val) => {
+        this.setState({
+            selectedId: val.id,
+            selectedQty: val.quantity
         })
     }
 
@@ -40,6 +52,20 @@ class Cart extends Component {
         ).then((res) => {
             this.getCartData()
             console.log(res.data)
+        })
+    }
+    
+    onSaveClick = (id) => {
+        Axios.put(
+            URL_API + `carts/addsameproduct/${id}`,
+            {
+                quantity: this.state.selectedQty
+            }
+        ).then((res) => {
+            console.log(res.data)
+            this.getCartData()
+        }).catch((err) => {
+            console.log(err)
         })
     }
 
@@ -64,17 +90,37 @@ class Cart extends Component {
         return this.state.carts.map((val) => {
             let image = URL_API + val.productImage
             let productPrice = val.productPrice
-            return (
-                <tr key={val.id}>
-                    <td>
-                        <img src={image} alt="" width="200px"/>
-                    </td>
-                    <td>{val.productName}</td>
-                    <td>Rp {productPrice.toLocaleString('IN')}</td>
-                    <td>{val.quantity}</td>
-                    <td><button onClick={() => {this.onDeleteClick(val.id)}} className="button-ku-delete">Delete</button></td>
-                </tr>
-            )
+            if(this.state.selectedId !== val.id) {
+                return (
+                    <tr key={val.id}>
+                        <td>
+                            <img src={image} alt="" width="200px"/>
+                        </td>
+                        <td>{val.productName}</td>
+                        <td>Rp {productPrice.toLocaleString('IN')}</td>
+                        <td>{val.quantity}</td>
+                        <td>
+                            <button onClick={() => {this.onEditClick(val)}} className="button-ku mb-1">Edit Qty</button>
+                            <button onClick={() => {this.onDeleteClick(val.id)}} className="button-ku-delete btn-block">Delete</button>
+                        </td>
+                    </tr>
+                )
+            } else {
+                return (
+                    <tr key={val.id}>
+                        <td>
+                            <img src={image} alt="" width="200px"/>
+                        </td>
+                        <td>{val.productName}</td>
+                        <td>Rp {productPrice.toLocaleString('IN')}</td>
+                        <td><input type="number" min="1" className="form-control" onChange={(e) => {this.setState({selectedQty: e.target.value})}} value={this.state.selectedQty}/></td>
+                        <td>
+                            <button onClick={() => {this.onSaveClick(val.id)}} className="button-ku mb-1">Save</button>
+                            <button onClick={() => {this.setState({selectedId: 0})}} className="button-ku-delete btn-block">Cancel</button>
+                        </td>
+                    </tr>
+                )
+            }
         })
     }
 
