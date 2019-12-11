@@ -106,8 +106,8 @@ class Header extends Component {
                                 </DropdownToggle>
                                 <DropdownMenu>
                                     <DropdownItem><Link to="/accountinfo">Account Info</Link></DropdownItem>
-                                    <DropdownItem>Address</DropdownItem>
-                                    <DropdownItem>Change Password</DropdownItem>
+                                    <DropdownItem disabled>Address</DropdownItem>
+                                    <DropdownItem disabled>Change Password</DropdownItem>
                                 </DropdownMenu>
                             </Dropdown>
 
@@ -117,8 +117,8 @@ class Header extends Component {
 
                             <div className="ml-2" style={{paddingTop: "7px", cursor: "pointer"}}>
                                 <Link to="/cart">
-                                    <div><IoMdCart/></div>
-                                    {/* <sub style={{color: '#8b0000'}}>{this.state.quantityCart}</sub> */}
+                                    <div><IoMdCart/><sub style={{color: '#8b0000'}}>{this.props.cartQty}</sub></div>
+                                    
                                 </Link>
                             </div>
                         </div>
@@ -204,7 +204,8 @@ const mapStateToProps = (state) => {
         userEmail: state.auth.email,
         userId: state.auth.id,
         role: state.auth.role,
-        firstName: state.auth.firstName
+        firstName: state.auth.firstName,
+        cartQty: state.cart.totalQty
     }
 }
 

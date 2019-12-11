@@ -142,8 +142,8 @@ class ManageProducts extends Component {
                         <td>Rp {parseInt(value.price).toLocaleString('IN')}</td>
                         <td><img src={URL_API + value.image} alt="product" width="100px"/></td>
                         <td>
-                            <button onClick={()=>{this.onEditClick(value)}}>Edit</button>
-                            <button onClick={()=>{this.onDeleteClick(value.id)}}>Delete</button>
+                            <button className="button-ku mb-1" onClick={()=>{this.onEditClick(value)}}>Edit</button>
+                            <button className="button-ku-delete btn-block" onClick={()=>{this.onDeleteClick(value.id)}}>Delete</button>
                         </td>
                     </tr>
                 )
@@ -169,8 +169,8 @@ class ManageProducts extends Component {
                             />
                         </td>
                         <td>
-                            <button onClick={() => {this.onSaveClick(value.id)}}>Save</button>
-                            <button onClick={() => {this.setState({selectedId: 0})}}>Cancel</button>
+                            <button className="button-ku mb-1" onClick={() => {this.onSaveClick(value.id)}}>Save</button>
+                            <button className="button-ku-delete btn-block" onClick={() => {this.setState({selectedId: 0})}}>Cancel</button>
                         </td>
                     </tr>
                 )

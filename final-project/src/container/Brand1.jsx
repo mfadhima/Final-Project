@@ -77,8 +77,8 @@ class AllProduct extends Component {
                                 <div className="card-title mt-3">
                                     <h5>Search by Price</h5> <hr/>
                                 </div>
-                                <input onChange={(e) => {this.setState({minimumPrice: e.target.value})}} placeholder="Minimum Price" className="form-control" type="text"/>
-                                <input onChange={(e) => {this.setState({maximumPrice: e.target.value})}} placeholder="Maximum Price" className="form-control mb-3" type="text"/>
+                                <input onChange={(e) => {this.setState({minimumPrice: e.target.value})}} placeholder="Minimum Price" className="form-control" type="number"/>
+                                <input onChange={(e) => {this.setState({maximumPrice: e.target.value})}} placeholder="Maximum Price" className="form-control mb-3" type="number"/>
                                 <button onClick={this.onSearchByPrice} className="button-ku">Search</button>
                             </div>
                         </div>

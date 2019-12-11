@@ -56,28 +56,32 @@ class Transaction extends Component {
         }
     }
 
-    onVerifyClick = (id) => {
-        Axios.put(
-            URL_API + `transactions/verifypayment/${id}`
-        ).then((res) => {
-            this.setState({message: res.data})
-            this.getTransaction()
-            this.getVerifiedTransaction()
-        }).catch((err) => {
-            console.log(err)
-        })
+    onVerifyClick = (val) => {
+        if(val.receipt) {
+            Axios.put(
+                URL_API + `transactions/verifypayment/${val.id}`
+            ).then((res) => {
+                this.setState({message: res.data})
+                this.getTransaction()
+                this.getVerifiedTransaction()
+            }).catch((err) => {
+                console.log(err)
+            })
+        }
     }
 
-    onRejectClick = (id) => {
-        Axios.put(
-            URL_API + `transactions/rejectpayment/${id}`
-        ).then((res) => {
-            this.setState({message: res.data})
-            this.getTransaction()
-            this.getVerifiedTransaction()
-        }).catch((err) => {
-            console.log(err)
-        })
+    onRejectClick = (val) => {
+        if(val.receipt) {
+            Axios.put(
+                URL_API + `transactions/rejectpayment/${val.id}`
+            ).then((res) => {
+                this.setState({message: res.data})
+                this.getTransaction()
+                this.getVerifiedTransaction()
+            }).catch((err) => {
+                console.log(err)
+            })
+        }
     }
 
     renderTransaction = () => {
@@ -110,10 +114,10 @@ class Transaction extends Component {
                     <td>#{val.id}</td>
                     <td>{val.transactionDate}</td>
                     <td>Rp {val.totalPrice.toLocaleString('IN')}</td>
-                    <td><img src={receipt} alt="" width="300px"/></td>
+                    <td><img src={receipt} alt="user has not uploaded any receipt yet" width="300px"/></td>
                     <td>
-                        <div onClick={() => {this.onVerifyClick(val.id)}}>{verifyButton}</div>
-                        <div onClick={() => {this.onRejectClick(val.id)}}>{rejectButton}</div>
+                        <div onClick={() => {this.onVerifyClick(val)}}>{verifyButton}</div>
+                        <div onClick={() => {this.onRejectClick(val)}}>{rejectButton}</div>
                     </td>
                 </tr>
             )

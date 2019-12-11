@@ -16,8 +16,12 @@ import ProductDetail from './container/ProductDetail'
 import Cart from './container/Cart'
 import AccountInfo from './container/AccountInfo'
 import Transaction from './container/Transaction'
+import TermsAndConditions from './container/TermsAndConditions'
+import RefundPolicy from './container/RefundPolicy'
+import Faq from './container/Faq'
+import ContactUs from './container/ContactUs'
 
-import {keepLogin} from './1.actions/index'
+import {keepLogin, quantityCart} from './1.actions/index'
 
 class App extends Component {
     state = {
@@ -28,6 +32,7 @@ class App extends Component {
         let userStorage = JSON.parse(localStorage.getItem('userData'))
         if(userStorage){
             this.props.keepLogin(userStorage)
+            this.props.quantityCart(userStorage)
         }
         this.setState({check: true})
     }
@@ -49,6 +54,10 @@ class App extends Component {
                         <Route path='/cart' component={Cart} />
                         <Route path='/accountinfo' component={AccountInfo} />
                         <Route path='/transaction' component={Transaction} />
+                        <Route path='/termsandconditions' component={TermsAndConditions} />
+                        <Route path='/refundpolicy' component={RefundPolicy} />
+                        <Route path='/faq' component={Faq} />
+                        <Route path='/contactus' component={ContactUs} />
                         <Footer/>
                     </BrowserRouter>
                 </div>
@@ -59,4 +68,4 @@ class App extends Component {
     }
 }
 
-export default connect(null, {keepLogin})(App)
+export default connect(null, {keepLogin, quantityCart})(App)

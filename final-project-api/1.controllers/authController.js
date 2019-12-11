@@ -76,7 +76,7 @@ module.exports = {
                         try {
                             if(err2) throw err2
                             let mailOptions = {
-                                from: 'Shoes Inc',
+                                from: 'Bag.co',
                                 to: req.body.email,
                                 subject: 'Account Verification',
                                 html: `<p> Click <a href="http://localhost:8888/auth/verify?firstName=${req.body.firstName}&email=${req.body.email}"> here </a> to verify your account! </p>`

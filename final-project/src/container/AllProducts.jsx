@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Axios from 'axios'
+// import Pagination from 'react-js-pagination'
 import ProductItem from '../components/ProductItem'
 import '../styles/AllProducts.css'
 
@@ -7,6 +8,7 @@ const URL_API = 'http://localhost:8888/'
 
 class AllProduct extends Component {
     state = {
+        // activePage: 1,
         products: [],
         searchProducts: [],
         searchByNameInput: '',
@@ -32,6 +34,11 @@ class AllProduct extends Component {
             console.log(err)
         })
     }
+
+    // handlePageChange(pageNumber) {
+    //     console.log(`active page is ${pageNumber}`);
+    //     this.setState({activePage: pageNumber});
+    // }
 
     onSearchByName = () => {
         let searchByName = this.state.products.filter((val) => {
@@ -79,8 +86,8 @@ class AllProduct extends Component {
                                 <div className="card-title mt-3">
                                     <h5>Search by Price</h5> <hr/>
                                 </div>
-                                <input onChange={(e) => {this.setState({minimumPrice: e.target.value})}} placeholder="Minimum Price" className="form-control" type="text"/>
-                                <input onChange={(e) => {this.setState({maximumPrice: e.target.value})}} placeholder="Maximum Price" className="form-control mb-3" type="text"/>
+                                <input onChange={(e) => {this.setState({minimumPrice: e.target.value})}} placeholder="Minimum Price" className="form-control" type="number"/>
+                                <input onChange={(e) => {this.setState({maximumPrice: e.target.value})}} placeholder="Maximum Price" className="form-control mb-3" type="number"/>
                                 <button onClick={this.onSearchByPrice} className="button-ku">Search</button>
                             </div>
                         </div>
@@ -89,6 +96,13 @@ class AllProduct extends Component {
                     <div className="col-8">
                         <div className="row">
                             {this.renderProductData()}
+                            {/* <Pagination
+                                activePage={this.state.activePage}
+                                itemsCountPerPage={4}
+                                totalItemsCount={this.state.searchProducts.length}
+                                pageRangeDisplayed={5}
+                                onChange={this.handlePageChange}
+                            /> */}
                         </div>
                     </div>
                     

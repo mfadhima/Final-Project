@@ -17,10 +17,10 @@ class Footer extends Component {
                         </div>
                         <div className="col-3">
                             <h5>Information</h5>
-                            <a href="http://" target="_blank" rel="noopener noreferrer">Link 1</a><br/>
-                            <a href="http://" target="_blank" rel="noopener noreferrer">Link 2</a><br/>
-                            <a href="http://" target="_blank" rel="noopener noreferrer">Link 3</a><br/>
-                            <a href="http://" target="_blank" rel="noopener noreferrer">Link 4</a>
+                            <Link to="/termsandconditions">Terms and Conditions</Link><br/>
+                            <Link to="/refundpolicy">Refund Policy</Link><br/>
+                            <Link to="/faq">F.A.Q</Link><br/>
+                            <Link to="/contactus">Contact Us</Link><br/>
                         </div>
                         <div className="col-3">
                             <h5>Menu</h5>
