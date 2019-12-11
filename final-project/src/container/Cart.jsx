@@ -56,17 +56,26 @@ class Cart extends Component {
     }
     
     onSaveClick = (id) => {
-        Axios.put(
-            URL_API + `carts/addsameproduct/${id}`,
-            {
-                quantity: this.state.selectedQty
-            }
-        ).then((res) => {
-            console.log(res.data)
-            this.getCartData()
-        }).catch((err) => {
-            console.log(err)
-        })
+        if(this.state.selectedQty <= 0) {
+            Axios.delete(
+                URL_API + `carts/deletecart/${id}`
+            ).then((res) => {
+                this.getCartData()
+                console.log(res.data)
+            })
+        } else {
+            Axios.put(
+                URL_API + `carts/addsameproduct/${id}`,
+                {
+                    quantity: this.state.selectedQty
+                }
+            ).then((res) => {
+                console.log(res.data)
+                this.getCartData()
+            }).catch((err) => {
+                console.log(err)
+            })
+        }
     }
 
     onCheckoutClick = () => {

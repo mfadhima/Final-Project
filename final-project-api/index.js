@@ -63,8 +63,9 @@ app.get('/products/productdata', (req, res) => {
     })
 })
 
-app.get('/products/productbrodo', (req, res) => {
-    db.query(`select * from products where name like '%Brodo%'`, (err, result) => {
+// GET BRAND 1
+app.get('/products/productkalibre', (req, res) => {
+    db.query(`select * from products where name like '%Kalibre%'`, (err, result) => {
         try {
             if(err) throw err
             res.send(result)
@@ -74,8 +75,9 @@ app.get('/products/productbrodo', (req, res) => {
     })
 })
 
-app.get('/products/productguteninc', (req, res) => {
-    db.query(`select * from products where name like '%GutenInc%'`, (err, result) => {
+// GET BRAND 2
+app.get('/products/productbodypack', (req, res) => {
+    db.query(`select * from products where name like '%Bodypack%'`, (err, result) => {
         try {
             if(err) throw err
             res.send(result)
@@ -190,9 +192,22 @@ app.get('/transactions/getuserorder', (req, res) => {
     })
 })
 
-// GET TRANSACTION FOR ADMIN //
+// GET ALL TRANSACTION FOR ADMIN //
 app.get('/transactions/gettransaction', (req, res) => {
-    let sql = `select * from transactions`
+    let sql = `select * from transactions where isVerified in (0, 2)`
+    db.query(sql, (err, result) => {
+        try {
+            if(err) throw err
+            res.send(result)
+        } catch(err) {
+            console.log(err)
+        }
+    })
+})
+
+// GET VERIFIED TRANSACTION FOR ADMIN //
+app.get('/transactions/getverifiedtransaction', (req, res) => {
+    let sql = `select * from transactions where isVerified = 1`
     db.query(sql, (err, result) => {
         try {
             if(err) throw err
